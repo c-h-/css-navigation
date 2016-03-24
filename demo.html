@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS Navigation</title>
+	<style>
+		/* reset from browser defaults */
+		*{margin:0;padding:0;}
+
+		/* demo 1: target based navigation */
+		/* select divs that are not last div (default page) and not currently selected link */
+		#demo-1 div:not(:last-of-type):not(:target){
+			display: none;
+		}
+		#demo-1 div:target ~ div:last-child{
+			display: none;
+		}
+
+		/* demo 2: radio button navigation */
+		input[type="radio"]{
+			display: none;
+		}
+		[name="page"] + div{
+			display: none;
+		}
+		[name="page"]:checked + div{
+			display: block;
+		}
+
+		/* unneccessary demo styles */
+		label{
+			color: blue;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+		label:active{
+			color: red;
+		}
+		div{
+			margin: 10px;
+			background-color: #eee;
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+
+<section id="demo-1">
+	<h3>Demo 1: Target based navigation</h3>
+	<p>This navigation retains state across page loads but browser support is unknown due to a <a href="https://bugs.webkit.org/show_bug.cgi?id=83490" target="_blank">long standing webkit bug.</a></p>
+
+	<!-- Demo works by updating url hash -->
+	<a href="#home">Home</a>
+	<a href="#page-2">Page 2</a>
+
+	<!-- when url hash matches id, div will appear. -->
+	<div id="page-2">
+		This is page 2!
+	</div>
+
+	<!-- put default page div last -->
+	<div id="home">
+		<p>This is homepage!</p>
+	</div>
+</section>
+
+
+
+
+
+
+<section id="demo-2">
+	<h3>Demo 2: Radio button based navigation</h3>
+	<p>This navigation does not retain state across page loads but browser support is better (no IE8 because of <code>:checked</code> attribute support)</p>
+
+	<!-- The label links to the input with id equal to label's for attribute -->
+	<label for="home-check">Home</label>
+	<label for="page-2-check">Page 2</label>
+	<label for="page-3-check">Page 3</label>
+
+	<!-- Put the input above the div that is surrounding your "page" -->
+	<input type="radio" id="home-check" name="page" checked><!-- checked marks default page -->
+	<div>
+		<p>This is homepage!</p>
+	</div>
+
+	<input type="radio" id="page-2-check" name="page">
+	<div>
+		<p>This is page 2!</p>
+	</div>
+
+	<input type="radio" id="page-3-check" name="page">
+	<div>
+		<p>This is page 3!</p>
+	</div>
+</section>
+
+
+</body>
+</html>
