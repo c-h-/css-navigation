@@ -8,18 +8,14 @@
 
 		/* demo 1: target based navigation */
 		/* select divs that are not last div (default page) and not currently selected link */
-		#demo-1 div:not(:last-of-type):not(:target){
-			display: none;
-		}
+		#demo-1 div:not(:last-of-type):not(:target),
 		#demo-1 div:target ~ div:last-child{
 			display: none;
 		}
 
 		/* demo 2: radio button navigation */
+		[name="page"] + div,
 		input[type="radio"]{
-			display: none;
-		}
-		[name="page"] + div{
 			display: none;
 		}
 		[name="page"]:checked + div{
