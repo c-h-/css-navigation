@@ -6,7 +6,7 @@
 		/* demo 1: target based navigation */
 		/* select divs that are not last div (default page) and not currently selected link */
 		#demo-1 div:not(:last-of-type):not(:target),
-		#demo-1 div:target ~ div:last-child{
+		#demo-1 div:target ~ div:last-of-type{
 			display: none;
 		}
 
@@ -49,7 +49,7 @@
 
 	<!-- when url hash matches id, div will appear. -->
 	<div id="page-2">
-		This is page 2!
+		<p>This is page 2!</p>
 	</div>
 
 	<!-- put default page div last -->
